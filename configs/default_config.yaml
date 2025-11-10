@@ -1,0 +1,30 @@
+# Default Configuration for Nested Learning (Tier 1: CMS)
+
+model:
+  input_size: 768
+  hidden_size: 3072
+  
+# Chunk sizes define update frequency for each level
+# level1_fast: updates every step (chunk_size=1)
+# level2_medium: accumulates for 16 steps
+# level3_slow: accumulates for 256 steps
+scheduler:
+  chunk_sizes:
+    level1_fast: 1
+    level2_medium: 16
+    level3_slow: 256
+
+# Base learning rate (will be scaled by 1/chunk_size for each level)
+optimizer:
+  base_lr: 0.0001  # 1e-4
+  optimizer_type: "adam"
+  weight_decay: 0.0
+
+training:
+  batch_size: 32
+  num_steps: 10000
+  log_interval: 100
+  checkpoint_interval: 1000
+  
+# Random seed for reproducibility
+seed: 42
