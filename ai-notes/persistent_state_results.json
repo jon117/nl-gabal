@@ -1,0 +1,40 @@
+{
+  "results": [
+    {
+      "name": "1_baseline_reset_every_batch",
+      "final_ppl": 52.578121185302734,
+      "total_time": 36.83622336387634,
+      "persistent_states": false,
+      "use_surprise": false,
+      "seq_len": 256
+    },
+    {
+      "name": "2_persistent_states_only",
+      "final_ppl": 52.00775909423828,
+      "total_time": 37.3342068195343,
+      "persistent_states": true,
+      "use_surprise": false,
+      "seq_len": 256
+    },
+    {
+      "name": "3_persistent_plus_surprise",
+      "final_ppl": 50.19662094116211,
+      "total_time": 49.7282919883728,
+      "persistent_states": true,
+      "use_surprise": true,
+      "seq_len": 256
+    },
+    {
+      "name": "4_persistent_long_sequences",
+      "final_ppl": 51.62067413330078,
+      "total_time": 54.707940101623535,
+      "persistent_states": true,
+      "use_surprise": false,
+      "seq_len": 512
+    }
+  ],
+  "baseline_ppl": 52.578121185302734,
+  "best_config": "3_persistent_plus_surprise",
+  "best_ppl": 50.19662094116211,
+  "improvement": 2.381500244140625
+}

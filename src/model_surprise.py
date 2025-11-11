@@ -67,6 +67,10 @@ class NestedModelWithSurprise(nn.Module):
             nn.Linear(hidden_size, input_size)
         )
         
+        # Output layer (projects from input_size to input_size by default)
+        # Can be replaced for specific tasks (e.g., classification, language modeling)
+        self.output_layer = nn.Linear(input_size, input_size)
+        
         # KEY: Store levels in a dictionary for easy access by scheduler and optimizer setup
         self.levels: Dict[str, nn.Module] = {
             "level1_fast": self.level1_fast,
@@ -113,7 +117,8 @@ class NestedModelWithSurprise(nn.Module):
             fast_out, _ = self.level1_fast(x)
             medium_out = self.level2_medium(fast_out)
             slow_out = self.level3_slow(medium_out)
-            return slow_out, None
+            logits = self.output_layer(slow_out)
+            return logits, None
         
         # SURPRISE-TRACKING FORWARD PASS
         # We need to store:
@@ -150,12 +155,15 @@ class NestedModelWithSurprise(nn.Module):
         
         activations["level2_medium"] = medium_out_tracked
         
-        # Level 3: Slow, long-term feed-forward processing (final output)
+        # Level 3: Slow, long-term feed-forward processing
         inputs["level3_slow"] = medium_out_tracked
         slow_out = self.level3_slow(medium_out_tracked)
         
         # Always track final output (we compute gradients w.r.t. it for the main loss)
         activations["level3_slow"] = slow_out
+        
+        # Final output layer
+        logits = self.output_layer(slow_out)
         
         # Package up the information needed for surprise computation
         surprise_info = {
@@ -163,7 +171,7 @@ class NestedModelWithSurprise(nn.Module):
             "inputs": inputs,            # The x_ℓ values
         }
         
-        return slow_out, surprise_info
+        return logits, surprise_info
     
     def get_level_names(self):
         """Returns the names of all learning levels."""

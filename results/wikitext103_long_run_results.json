@@ -1,0 +1,12 @@
+{
+  "final_ppl": 10.6972074508667,
+  "total_time": 243.45062613487244,
+  "num_steps": 10000,
+  "batch_size": 64,
+  "seq_len": 512,
+  "vocab_size": 283,
+  "num_tokens": 107804370,
+  "num_batches": 3288,
+  "multi_gpu": false,
+  "gpu_count": 1
+}
