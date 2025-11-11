@@ -35,12 +35,16 @@ pip install -r requirements.txt
 ## Roadmap
 
 - [x] **Tier 1: CMS Foundation** - Multi-timescale gradient accumulation with step-aligned updates
-- [ ] **Tier 2: Auxiliary Losses** - Intermediate activation losses
-- [ ] **Tier 3: GABAL** - Gated and Bounded Adaptive Learning with learned learning rates
+- [x] **Tier 2: Surprise-Based Objectives** - Auxiliary losses using second-order gradients (∇_{y_ℓ} L)
+- [ ] **Tier 3: LSTM State Management** - Proper hidden state persistence
+- [ ] **Tier 4: Titans Self-Referential Module** - Learning parameter update rules
+- [ ] **Tier 5: GABAL** - Gated and Bounded Adaptive Learning with learned learning rates
 
 ## Key Features
 
 - **Memory Efficient**: Uses native PyTorch gradient accumulation
 - **Step-Aligned Logic**: Updates occur at precise step multiples
 - **Scaled Learning Rates**: Automatically adjusts LR by 1/chunk_size
+- **Surprise-Based Objectives**: Second-order gradients for auxiliary losses (Tier 2)
 - **Extensible Design**: Clean separation for future enhancements
+- **Toggle-able Surprise**: Easy on/off switch for ablation studies

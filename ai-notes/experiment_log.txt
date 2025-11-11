@@ -1,0 +1,315 @@
+
+======================================================================
+SURPRISE OBJECTIVES EXPERIMENT SUITE
+======================================================================
+
+This suite tests different surprise objective configurations
+to understand their effect on training dynamics.
+
+Using device: cuda (NVIDIA GeForce RTX 4090 D)
+
+======================================================================
+EXPERIMENT: baseline
+======================================================================
+Use surprise: False
+Surprise weights: {}
+Chunk sizes: {'level1_fast': 1, 'level2_medium': 8, 'level3_slow': 16}
+Steps: 500
+======================================================================
+
+Random seed set to: 42
+ChunkedUpdateScheduler initialized with chunk sizes: {'level1_fast': 1, 'level2_medium': 8, 'level3_slow': 16}
+
+======================================================================
+Setting up optimizers with scaled learning rates
+======================================================================
+Level                Chunk Size   Base LR      Scaled LR   
+----------------------------------------------------------------------
+level1_fast          1            1.00e-04     1.00e-04    
+level2_medium        8            1.00e-04     1.25e-05    
+level3_slow          16           1.00e-04     6.25e-06    
+======================================================================
+
+
+======================================================================
+SurpriseLossComputer initialized
+======================================================================
+Loss weights: {'level1_fast': 0.3, 'level2_medium': 0.1}
+Gradient clip value: 10.0
+Compute surprise every 1 steps
+======================================================================
+
+Running 500 training steps...
+  Step 100/500: main_loss=0.9968, aux_loss=0.0000
+  Step 200/500: main_loss=0.9881, aux_loss=0.0000
+  Step 300/500: main_loss=0.9692, aux_loss=0.0000
+  Step 400/500: main_loss=0.9288, aux_loss=0.0000
+  Step 500/500: main_loss=0.8967, aux_loss=0.0000
+
+======================================================================
+RESULTS: baseline
+======================================================================
+Total time: 3.26s (6.53ms/step)
+Final main loss: 0.8834
+Final aux loss: 0.0000
+Main loss improvement: 0.1174
+
+Update counts:
+  level1_fast: 500
+  level2_medium: 62
+  level3_slow: 31
+======================================================================
+
+
+======================================================================
+EXPERIMENT: surprise_low
+======================================================================
+Use surprise: True
+Surprise weights: {'level1_fast': 0.05, 'level2_medium': 0.01}
+Chunk sizes: {'level1_fast': 1, 'level2_medium': 8, 'level3_slow': 16}
+Steps: 500
+======================================================================
+
+Random seed set to: 42
+ChunkedUpdateScheduler initialized with chunk sizes: {'level1_fast': 1, 'level2_medium': 8, 'level3_slow': 16}
+
+======================================================================
+Setting up optimizers with scaled learning rates
+======================================================================
+Level                Chunk Size   Base LR      Scaled LR   
+----------------------------------------------------------------------
+level1_fast          1            1.00e-04     1.00e-04    
+level2_medium        8            1.00e-04     1.25e-05    
+level3_slow          16           1.00e-04     6.25e-06    
+======================================================================
+
+
+======================================================================
+SurpriseLossComputer initialized
+======================================================================
+Loss weights: {'level1_fast': 0.05, 'level2_medium': 0.01}
+Gradient clip value: 10.0
+Compute surprise every 1 steps
+======================================================================
+
+Running 500 training steps...
+  Step 100/500: main_loss=0.9968, aux_loss=0.0010
+  Step 200/500: main_loss=0.9884, aux_loss=0.0010
+  Step 300/500: main_loss=0.9747, aux_loss=0.0025
+  Step 400/500: main_loss=0.9353, aux_loss=0.0084
+  Step 500/500: main_loss=0.8985, aux_loss=0.0115
+
+======================================================================
+RESULTS: surprise_low
+======================================================================
+Total time: 6.23s (12.46ms/step)
+Final main loss: 0.8839
+Final aux loss: 0.0124
+Main loss improvement: 0.1169
+
+Update counts:
+  level1_fast: 500
+  level2_medium: 62
+  level3_slow: 31
+======================================================================
+
+
+======================================================================
+EXPERIMENT: surprise_medium
+======================================================================
+Use surprise: True
+Surprise weights: {'level1_fast': 0.1, 'level2_medium': 0.05}
+Chunk sizes: {'level1_fast': 1, 'level2_medium': 8, 'level3_slow': 16}
+Steps: 500
+======================================================================
+
+Random seed set to: 42
+ChunkedUpdateScheduler initialized with chunk sizes: {'level1_fast': 1, 'level2_medium': 8, 'level3_slow': 16}
+
+======================================================================
+Setting up optimizers with scaled learning rates
+======================================================================
+Level                Chunk Size   Base LR      Scaled LR   
+----------------------------------------------------------------------
+level1_fast          1            1.00e-04     1.00e-04    
+level2_medium        8            1.00e-04     1.25e-05    
+level3_slow          16           1.00e-04     6.25e-06    
+======================================================================
+
+
+======================================================================
+SurpriseLossComputer initialized
+======================================================================
+Loss weights: {'level1_fast': 0.1, 'level2_medium': 0.05}
+Gradient clip value: 10.0
+Compute surprise every 1 steps
+======================================================================
+
+Running 500 training steps...
+  Step 100/500: main_loss=0.9968, aux_loss=0.0020
+  Step 200/500: main_loss=0.9887, aux_loss=0.0021
+  Step 300/500: main_loss=0.9789, aux_loss=0.0030
+  Step 400/500: main_loss=0.9472, aux_loss=0.0113
+  Step 500/500: main_loss=0.9066, aux_loss=0.0196
+
+======================================================================
+RESULTS: surprise_medium
+======================================================================
+Total time: 7.89s (15.77ms/step)
+Final main loss: 0.8905
+Final aux loss: 0.0220
+Main loss improvement: 0.1103
+
+Update counts:
+  level1_fast: 500
+  level2_medium: 62
+  level3_slow: 31
+======================================================================
+
+
+======================================================================
+EXPERIMENT: surprise_high
+======================================================================
+Use surprise: True
+Surprise weights: {'level1_fast': 0.3, 'level2_medium': 0.1}
+Chunk sizes: {'level1_fast': 1, 'level2_medium': 8, 'level3_slow': 16}
+Steps: 500
+======================================================================
+
+Random seed set to: 42
+ChunkedUpdateScheduler initialized with chunk sizes: {'level1_fast': 1, 'level2_medium': 8, 'level3_slow': 16}
+
+======================================================================
+Setting up optimizers with scaled learning rates
+======================================================================
+Level                Chunk Size   Base LR      Scaled LR   
+----------------------------------------------------------------------
+level1_fast          1            1.00e-04     1.00e-04    
+level2_medium        8            1.00e-04     1.25e-05    
+level3_slow          16           1.00e-04     6.25e-06    
+======================================================================
+
+
+======================================================================
+SurpriseLossComputer initialized
+======================================================================
+Loss weights: {'level1_fast': 0.3, 'level2_medium': 0.1}
+Gradient clip value: 10.0
+Compute surprise every 1 steps
+======================================================================
+
+Running 500 training steps...
+  Step 100/500: main_loss=0.9969, aux_loss=0.0057
+  Step 200/500: main_loss=0.9893, aux_loss=0.0054
+  Step 300/500: main_loss=0.9824, aux_loss=0.0056
+  Step 400/500: main_loss=0.9735, aux_loss=0.0069
+  Step 500/500: main_loss=0.9470, aux_loss=0.0174
+
+======================================================================
+RESULTS: surprise_high
+======================================================================
+Total time: 6.40s (12.79ms/step)
+Final main loss: 0.9282
+Final aux loss: 0.0246
+Main loss improvement: 0.0726
+
+Update counts:
+  level1_fast: 500
+  level2_medium: 62
+  level3_slow: 31
+======================================================================
+
+
+======================================================================
+EXPERIMENT: surprise_level1_only
+======================================================================
+Use surprise: True
+Surprise weights: {'level1_fast': 0.3}
+Chunk sizes: {'level1_fast': 1, 'level2_medium': 8, 'level3_slow': 16}
+Steps: 500
+======================================================================
+
+Random seed set to: 42
+ChunkedUpdateScheduler initialized with chunk sizes: {'level1_fast': 1, 'level2_medium': 8, 'level3_slow': 16}
+
+======================================================================
+Setting up optimizers with scaled learning rates
+======================================================================
+Level                Chunk Size   Base LR      Scaled LR   
+----------------------------------------------------------------------
+level1_fast          1            1.00e-04     1.00e-04    
+level2_medium        8            1.00e-04     1.25e-05    
+level3_slow          16           1.00e-04     6.25e-06    
+======================================================================
+
+
+======================================================================
+SurpriseLossComputer initialized
+======================================================================
+Loss weights: {'level1_fast': 0.3}
+Gradient clip value: 10.0
+Compute surprise every 1 steps
+======================================================================
+
+Running 500 training steps...
+  Step 100/500: main_loss=0.9969, aux_loss=0.0054
+  Step 200/500: main_loss=0.9892, aux_loss=0.0051
+  Step 300/500: main_loss=0.9821, aux_loss=0.0052
+  Step 400/500: main_loss=0.9719, aux_loss=0.0071
+  Step 500/500: main_loss=0.9407, aux_loss=0.0191
+
+======================================================================
+RESULTS: surprise_level1_only
+======================================================================
+Total time: 1.77s (3.54ms/step)
+Final main loss: 0.9205
+Final aux loss: 0.0261
+Main loss improvement: 0.0803
+
+Update counts:
+  level1_fast: 500
+  level2_medium: 62
+  level3_slow: 31
+======================================================================
+
+
+======================================================================
+COMPARISON ACROSS EXPERIMENTS
+======================================================================
+
+Experiment                     Final Loss   Improvement  Time (s)  
+----------------------------------------------------------------------
+baseline                       0.8834       0.1174       3.26      
+surprise_low                   0.8839       0.1169       6.23      
+surprise_medium                0.8905       0.1103       7.89      
+surprise_high                  0.9282       0.0726       6.40      
+surprise_level1_only           0.9205       0.0803       1.77      
+----------------------------------------------------------------------
+
+======================================================================
+SURPRISE EFFECT ANALYSIS (vs Baseline)
+======================================================================
+
+surprise_low:
+  Loss difference: -0.0005 (-0.06%)
+  Time overhead: +90.88%
+
+surprise_medium:
+  Loss difference: -0.0071 (-0.80%)
+  Time overhead: +141.58%
+
+surprise_high:
+  Loss difference: -0.0448 (-5.07%)
+  Time overhead: +95.95%
+
+surprise_level1_only:
+  Loss difference: -0.0371 (-4.20%)
+  Time overhead: -45.72%
+
+Results saved to: /workspace/nl-gabal/ai-notes/experiment_results.json
+
+======================================================================
+EXPERIMENT SUITE COMPLETE!
+======================================================================
+
+Key Findings will be analyzed in the next step...

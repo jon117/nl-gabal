@@ -1,0 +1,259 @@
+
+======================================================================
+COMPREHENSIVE HOPE EXPERIMENTS
+======================================================================
+
+Testing all components:
+1. Baseline (CMS + Adam)
+2. Surprise (CMS + Surprise + Adam)
+3. Delta-rule (CMS + Delta-rule)
+4. Full HOPE (CMS + Surprise + Delta-rule)
+======================================================================
+Using device: cuda (NVIDIA GeForce RTX 4090 D)
+
+Downloading WikiText-2...
+Downloaded 10,780,437 characters
+Vocabulary: 283 characters
+Dataset: 10,780,437 tokens
+
+
+======================================================================
+EXPERIMENT: 1_baseline_cms_adam
+======================================================================
+Use surprise: False
+Use delta-rule: False
+Steps: 1500
+======================================================================
+
+Random seed set to: 42
+ChunkedUpdateScheduler initialized with chunk sizes: {'level1_fast': 1, 'level2_medium': 16, 'level3_slow': 256}
+
+======================================================================
+Setting up optimizers with scaled learning rates
+======================================================================
+Level                Chunk Size   Base LR      Scaled LR   
+----------------------------------------------------------------------
+level1_fast          1            3.00e-04     3.00e-04    
+level2_medium        16           3.00e-04     1.87e-05    
+level3_slow          256          3.00e-04     1.17e-06    
+======================================================================
+
+Training for 1500 steps...
+  Step 200/1500 | Loss: 5.0654 | PPL: 162.62 | Aux: 0.0000 | Time: 1.8s
+  Step 400/1500 | Loss: 4.8104 | PPL: 122.88 | Aux: 0.0000 | Time: 3.3s
+  Step 600/1500 | Loss: 4.6882 | PPL: 108.74 | Aux: 0.0000 | Time: 4.9s
+  Step 800/1500 | Loss: 4.5753 | PPL: 97.12 | Aux: 0.0000 | Time: 6.6s
+  Step 1000/1500 | Loss: 4.4675 | PPL: 87.21 | Aux: 0.0000 | Time: 8.3s
+  Step 1200/1500 | Loss: 4.3687 | PPL: 79.00 | Aux: 0.0000 | Time: 10.7s
+  Step 1400/1500 | Loss: 4.2704 | PPL: 71.60 | Aux: 0.0000 | Time: 13.2s
+
+======================================================================
+RESULTS: 1_baseline_cms_adam
+======================================================================
+Final perplexity: 66.58
+PPL improvement: 187.48 → 66.58 (120.90)
+Total time: 14.5s
+======================================================================
+
+
+======================================================================
+EXPERIMENT: 2_surprise_adam
+======================================================================
+Use surprise: True
+Use delta-rule: False
+Surprise weights: {'level1_fast': 0.05, 'level2_medium': 0.01}
+Steps: 1500
+======================================================================
+
+Random seed set to: 42
+ChunkedUpdateScheduler initialized with chunk sizes: {'level1_fast': 1, 'level2_medium': 16, 'level3_slow': 256}
+
+======================================================================
+Setting up optimizers with scaled learning rates
+======================================================================
+Level                Chunk Size   Base LR      Scaled LR   
+----------------------------------------------------------------------
+level1_fast          1            3.00e-04     3.00e-04    
+level2_medium        16           3.00e-04     1.87e-05    
+level3_slow          256          3.00e-04     1.17e-06    
+======================================================================
+
+
+======================================================================
+SurpriseLossComputer initialized
+======================================================================
+Loss weights: {'level1_fast': 0.05, 'level2_medium': 0.01}
+Gradient clip value: 10.0
+Compute surprise every 1 steps
+======================================================================
+
+Training for 1500 steps...
+  Step 200/1500 | Loss: 5.0579 | PPL: 161.58 | Aux: 0.0381 | Time: 3.0s
+  Step 400/1500 | Loss: 4.7920 | PPL: 120.65 | Aux: 0.0470 | Time: 6.0s
+  Step 600/1500 | Loss: 4.6680 | PPL: 106.56 | Aux: 0.0484 | Time: 9.0s
+  Step 800/1500 | Loss: 4.5531 | PPL: 95.00 | Aux: 0.0498 | Time: 12.0s
+  Step 1000/1500 | Loss: 4.4451 | PPL: 85.27 | Aux: 0.0514 | Time: 15.0s
+  Step 1200/1500 | Loss: 4.3457 | PPL: 77.20 | Aux: 0.0531 | Time: 18.1s
+  Step 1400/1500 | Loss: 4.2457 | PPL: 69.86 | Aux: 0.0547 | Time: 21.1s
+
+======================================================================
+RESULTS: 2_surprise_adam
+======================================================================
+Final perplexity: 64.85
+PPL improvement: 186.96 → 64.85 (122.11)
+Total time: 22.6s
+======================================================================
+
+
+======================================================================
+EXPERIMENT: 3_delta_rule_only
+======================================================================
+Use surprise: False
+Use delta-rule: True
+Steps: 1500
+======================================================================
+
+Random seed set to: 42
+ChunkedUpdateScheduler initialized with chunk sizes: {'level1_fast': 1, 'level2_medium': 16, 'level3_slow': 256}
+
+======================================================================
+Setting up Delta-Rule optimizers with scaled learning rates
+======================================================================
+Level                Chunk Size   Base LR      Scaled LR   
+----------------------------------------------------------------------
+
+======================================================================
+AdamDeltaRule initialized
+======================================================================
+Learning rate: 0.0003
+Betas: (0.9, 0.999)
+Epsilon: 1e-08
+Decay rate (anti-Hebbian): 0.0001
+Weight decay: 0.0
+======================================================================
+
+level1_fast          1            3.00e-04     3.00e-04    
+
+======================================================================
+AdamDeltaRule initialized
+======================================================================
+Learning rate: 1.875e-05
+Betas: (0.9, 0.999)
+Epsilon: 1e-08
+Decay rate (anti-Hebbian): 0.0001
+Weight decay: 0.0
+======================================================================
+
+level2_medium        16           3.00e-04     1.87e-05    
+
+======================================================================
+AdamDeltaRule initialized
+======================================================================
+Learning rate: 1.171875e-06
+Betas: (0.9, 0.999)
+Epsilon: 1e-08
+Decay rate (anti-Hebbian): 0.0001
+Weight decay: 0.0
+======================================================================
+
+level3_slow          256          3.00e-04     1.17e-06    
+======================================================================
+
+Training for 1500 steps...
+  Step 200/1500 | Loss: 5.0654 | PPL: 162.62 | Aux: 0.0000 | Time: 2.3s
+  Step 400/1500 | Loss: 4.8104 | PPL: 122.88 | Aux: 0.0000 | Time: 4.8s
+  Step 600/1500 | Loss: 4.6882 | PPL: 108.74 | Aux: 0.0000 | Time: 7.2s
+  Step 800/1500 | Loss: 4.5753 | PPL: 97.12 | Aux: 0.0000 | Time: 9.7s
+  Step 1000/1500 | Loss: 4.4675 | PPL: 87.21 | Aux: 0.0000 | Time: 12.2s
+  Step 1200/1500 | Loss: 4.3686 | PPL: 79.00 | Aux: 0.0000 | Time: 14.7s
+  Step 1400/1500 | Loss: 4.2704 | PPL: 71.60 | Aux: 0.0000 | Time: 17.1s
+
+======================================================================
+RESULTS: 3_delta_rule_only
+======================================================================
+Final perplexity: 66.58
+PPL improvement: 187.48 → 66.58 (120.90)
+Total time: 18.4s
+======================================================================
+
+
+======================================================================
+EXPERIMENT: 4_full_hope
+======================================================================
+Use surprise: True
+Use delta-rule: True
+Surprise weights: {'level1_fast': 0.05, 'level2_medium': 0.01}
+Steps: 1500
+======================================================================
+
+Random seed set to: 42
+ChunkedUpdateScheduler initialized with chunk sizes: {'level1_fast': 1, 'level2_medium': 16, 'level3_slow': 256}
+
+======================================================================
+Setting up Delta-Rule optimizers with scaled learning rates
+======================================================================
+Level                Chunk Size   Base LR      Scaled LR   
+----------------------------------------------------------------------
+
+======================================================================
+AdamDeltaRule initialized
+======================================================================
+Learning rate: 0.0003
+Betas: (0.9, 0.999)
+Epsilon: 1e-08
+Decay rate (anti-Hebbian): 0.0001
+Weight decay: 0.0
+======================================================================
+
+level1_fast          1            3.00e-04     3.00e-04    
+
+======================================================================
+AdamDeltaRule initialized
+======================================================================
+Learning rate: 1.875e-05
+Betas: (0.9, 0.999)
+Epsilon: 1e-08
+Decay rate (anti-Hebbian): 0.0001
+Weight decay: 0.0
+======================================================================
+
+level2_medium        16           3.00e-04     1.87e-05    
+
+======================================================================
+AdamDeltaRule initialized
+======================================================================
+Learning rate: 1.171875e-06
+Betas: (0.9, 0.999)
+Epsilon: 1e-08
+Decay rate (anti-Hebbian): 0.0001
+Weight decay: 0.0
+======================================================================
+
+level3_slow          256          3.00e-04     1.17e-06    
+======================================================================
+
+
+======================================================================
+SurpriseLossComputer initialized
+======================================================================
+Loss weights: {'level1_fast': 0.05, 'level2_medium': 0.01}
+Gradient clip value: 10.0
+Compute surprise every 1 steps
+======================================================================
+
+Training for 1500 steps...
+Traceback (most recent call last):
+  File "/workspace/nl-gabal/ai-notes/comprehensive_experiment.py", line 389, in <module>
+    main()
+  File "/workspace/nl-gabal/ai-notes/comprehensive_experiment.py", line 342, in main
+    results = run_experiment(
+              ^^^^^^^^^^^^^^^
+  File "/workspace/nl-gabal/ai-notes/comprehensive_experiment.py", line 201, in run_experiment
+    optimizers[level_name].step(inputs=level_input)
+  File "/openhands/micromamba/envs/openhands/lib/python3.12/site-packages/torch/optim/optimizer.py", line 517, in wrapper
+    out = func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/nl-gabal/src/delta_rule_optimizer.py", line 347, in step
+    Wx_mean = torch.mv(p.data, x_mean)
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: size mismatch, got input (256), mat (256x512), vec (256)
